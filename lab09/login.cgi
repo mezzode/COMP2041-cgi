@@ -8,9 +8,17 @@ warningsToBrowser(1);
 
 $username = param('username') || '';
 $password = param('password') || '';
-
+# print "$username $password\n";
 if ($username && $password) {
-    print "$username authenticated.\n";
+    if (open PASSWORD, "../accounts/$username/password"){
+		if (<PASSWORD> eq $password){
+			print "$username authenticated.\n";
+		} else {
+			print "Incorrect password!\n";
+		}
+	} else {
+		print "Unknown username!\n";
+	}
 } elsif ($username && !$password){
     print start_form, "\n";
     print "Password:\n", textfield('password'), "\n";
