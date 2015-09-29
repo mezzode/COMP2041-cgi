@@ -9,7 +9,7 @@ cat <<eof
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Webserver IP, Host and Software</title>
+<title>IBrowser IP, Host and User Agent</title>
 
 </head>
 <body>
