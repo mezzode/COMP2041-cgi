@@ -19,13 +19,30 @@ if (defined $close){
 }
 
 if (defined $credit_card) {
-    print validate($credit_card);
-	print start_form, "\n";
+    # print validate($credit_card);
+	$code = validate($credit_card);
+	if ($code == 0){ # valid
+		param('credit_card','');
+		print start_form, "\n";
+		print "<p>$credit_card is valid</p>\n";
+		print "Another card number:\n";
+		print textfield(-name => 'credit_card'),"\n";
+	} elsif ($code == 1) { # invalid
+		print start_form, "\n";
+		print "<p>$credit_card is invalid</p>\n";
+		print "Try again:\n";
+		print textfield(-name => 'credit_card',-value => $credit_card),"\n";
+	} elsif ($code == 2) {
+		print start_form, "\n";
+		print "<p>$credit_card is invalid - does not contian exactly 16 digits</p>\n";
+		print "Try again:\n";
+		print textfield(-name => 'credit_card',-value => $credit_card),"\n";
+	}
 } else {
 	print start_form,"\n";
 	print "Enter credit card number:\n";
+	print textfield('credit_card'),"\n";
 }
-print textfield('credit_card'),"\n";
 print submit(value => Validate),"\n";
 print defaults('Reset'),"\n"; # print submit(value => Reset),"\n";
 print submit(-name => Close,-value => Close),"\n";
@@ -61,10 +78,13 @@ sub validate {
 	$number =~ s/\D//g; # works for numbers with random letters?
 	# print "$number\n";
 	if (length($number) != 16){
-		return "$credit_card is invalid - does not contain exactly 16 digits"
+		# return "$credit_card is invalid - does not contain exactly 16 digits"
+		return 2;
 	} elsif (luhn_checksum($number) % 10 == 0){
-		return "$credit_card is valid";
+		# return "$credit_card is valid";
+		return 0;
 	} else {
-		return "$credit_card is invalid";
+		# return "$credit_card is invalid";
+		return 1;
 	}
 }
