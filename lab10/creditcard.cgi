@@ -9,6 +9,8 @@ warningsToBrowser(1);
 print h2("Credit Card Validation"),"\n";
 
 $credit_card = param("credit_card");
+$credit_card =~ s/\D//g;
+param('credit_card',$credit_card);
 $close = param("Close");
 if (defined $close){
 	print "Thank you for using the Credit Card Validator.\n";
