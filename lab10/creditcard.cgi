@@ -6,14 +6,18 @@ use CGI::Carp qw/fatalsToBrowser warningsToBrowser/;
 print header, start_html("Credit Card Validation"), "\n";
 warningsToBrowser(1);
 print "<h2>Credit Card Validation</h2>\n";
-print "This page checks whether a potential credit card number satisfies the Luhn Formula.\n<p></p>\n";
-# this line is not printed on goodbye page
 
 $credit_card = param("credit_card");
 $close = param("Close");
 if (defined $close){
-	print "Thank you for using the Credit Card Validator\n";
-} elsif (defined $credit_card) {
+	print "Thank you for using the Credit Card Validator.\n";
+	print end_html;
+	exit 0;
+} else {
+	print "This page checks whether a potential credit card number satisfies the Luhn Formula.\n<p></p>\n";
+}
+
+if (defined $credit_card) {
     print validate($credit_card);
 } else {
 	print start_form,"\n";
