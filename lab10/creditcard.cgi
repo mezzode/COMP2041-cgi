@@ -31,12 +31,12 @@ if (defined $credit_card) {
 		print textfield(-name => 'credit_card'),"\n";
 	} elsif ($code == 1) { # invalid
 		print start_form, "\n";
-		print "<p>$credit_card is invalid</p>\n";
+		print span({-style => 'Color: red;'},"<p><b>$credit_card is invalid</b></p>"),"\n";
 		print "Try again:\n";
 		print textfield(-name => 'credit_card',-value => $credit_card),"\n";
 	} elsif ($code == 2) {
 		print start_form, "\n";
-		print "<p>$credit_card is invalid - does not contian exactly 16 digits</p>\n";
+		print span({-style => 'Color: red;'},"<p><b>$credit_card is invalid - does not contain exactly 16 digits</b></p>"),"\n";
 		print "Try again:\n";
 		print textfield(-name => 'credit_card',-value => $credit_card),"\n";
 	}
@@ -46,7 +46,9 @@ if (defined $credit_card) {
 	print textfield('credit_card'),"\n";
 }
 print submit(value => Validate),"\n";
-print defaults('Reset'),"\n"; # print submit(value => Reset),"\n";
+# print defaults('Reset'),"\n";
+# print submit(value => Reset),"\n";
+print reset();
 print submit(-name => Close,-value => Close),"\n";
 print end_html;
 exit 0;
