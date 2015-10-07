@@ -19,14 +19,15 @@ if (defined $close){
 
 if (defined $credit_card) {
     print validate($credit_card);
+	print start_form, "\n";
 } else {
 	print start_form,"\n";
 	print "Enter credit card number:\n";
-	print textfield('credit_card'),"\n";
-	print submit(value => Validate),"\n";
-	print defaults('Reset'),"\n"; # print submit(value => Reset),"\n";
-	print submit(-name => Close,-value => Close),"\n";
 }
+print textfield('credit_card'),"\n";
+print submit(value => Validate),"\n";
+print defaults('Reset'),"\n"; # print submit(value => Reset),"\n";
+print submit(-name => Close,-value => Close),"\n";
 print end_html;
 exit 0;
 
