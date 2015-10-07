@@ -5,9 +5,20 @@ use CGI::Carp qw/fatalsToBrowser warningsToBrowser/;
 
 print header, start_html("Credit Card Validation"), "\n";
 warningsToBrowser(1);
+print "<h2>Credit Card Validation</h2>\n";
+print "This page checks whether a potential credit card number satisfies the Luhn Formula.\n<p></p>\n";
+# this line is not printed on goodbye page
+
 $credit_card = param("credit_card");
 if (defined $credit_card) {
     print validate($credit_card);
+} else {
+	print start_form,"\n";
+	print "Enter credit card number:\n";
+	print textfield('credit_card'),"\n";
+	print submit(value => Validate),"\n";
+	print submit(value => Reset),"\n";
+	print submit(value => Close),"\n";
 }
 print end_html;
 exit 0;
