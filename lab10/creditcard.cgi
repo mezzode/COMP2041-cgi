@@ -10,15 +10,18 @@ print "This page checks whether a potential credit card number satisfies the Luh
 # this line is not printed on goodbye page
 
 $credit_card = param("credit_card");
-if (defined $credit_card) {
+$close = param("Close");
+if (defined $close){
+	print "Thank you for using the Credit Card Validator\n";
+} elsif (defined $credit_card) {
     print validate($credit_card);
 } else {
 	print start_form,"\n";
 	print "Enter credit card number:\n";
 	print textfield('credit_card'),"\n";
 	print submit(value => Validate),"\n";
-	print submit(value => Reset),"\n";
-	print submit(value => Close),"\n";
+	print defaults('Reset'),"\n"; # print submit(value => Reset),"\n";
+	print submit(-name => Close,-value => Close),"\n";
 }
 print end_html;
 exit 0;
