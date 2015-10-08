@@ -1,0 +1,16 @@
+Name                   Value                  Button         Expected Response                                              Actual Response
+-------------------------------------------------------------------------------------------------------------------------------------------
+Alpha                  abcdEFGHijklMNOP       Validate       "is invalid - does not contain exactly 16 digits"              Same
+Short Alphanumeric     abcd0000efgh1111       Validate       "00001111 is invalid - does not contain exactly 16 digits"     Same
+Invalid Alphanumeric   a0123b4567c8901d2345   Validate       "0123456789012345 is invalid"                                  Same
+Valid Alphanumeric     a0000b0000c0000d0000   Validate       "0000000000000000 is valid"                                    Same
+Short Numeric          0123456789             Validate       "0123456789 is invalid - does not contain exactly 16 digits"   Same
+Invalid Numeric        1234567890123456       Validate       "1234567890123456 is invalid"                                  Same
+Valid Numeric          1111222233334444       Validate       "1111222233334444 is valid"                                    Same
+Short Zero             00000000               Validate       "00000000 is invalid - does not contain exactly 16 digits"     Same
+Valid Zero             0000000000000000       Validate       "0000000000000000 is invalid"                                  Same
+None                                          Validate       "is invalid - does not contain exactly 16 digits"              Same
+
+Other:
+Reset after each; if invalid should be last number, if valid should be empty;
+Close should output close message.
