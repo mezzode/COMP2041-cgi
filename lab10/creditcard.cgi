@@ -48,7 +48,7 @@ if (defined $credit_card) {
 print submit(value => Validate),"\n";
 # print defaults('Reset'),"\n";
 # print submit(value => Reset),"\n";
-print reset();
+print reset(),"\n";
 print submit(-name => Close,-value => Close),"\n";
 print end_html;
 exit 0;
