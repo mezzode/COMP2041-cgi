@@ -1,13 +1,13 @@
 #!/usr/bin/perl -w
 
 sub reduce (&@) {
-    my $code = \&{shift @_};
+    my $code = \&{shift @_}; # code is a reference to the code block
     my @list = @_;
     $a = shift @list;
     while (@list) {
         $b = shift @list;
         # print "$a $b\n";
-        $a = $code->($a,$b);
+        $a = $code->($a,$b); # interpolate variables into code block
     }
     return $a;
 }
