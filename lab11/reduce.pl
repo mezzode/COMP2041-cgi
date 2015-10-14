@@ -2,7 +2,7 @@
 
 sub reduce (&@) {
     my $code = \&{shift @_};
-    @list = @_;
+    my @list = @_;
     $a = shift @list;
     while (@list) {
         $b = shift @list;
@@ -13,5 +13,9 @@ sub reduce (&@) {
 }
 
 $sum = reduce { $a + $b } 1 .. 10;
-
-print "$sum\n";
+$min = reduce { $a < $b ? $a : $b } 5..10;
+$maxstr = reduce { $a gt $b ? $a : $b } 'aa'..'ee';
+$concat = reduce { $a . $b } 'J'..'P';
+$sep = '-';
+$join = reduce { "$a$sep$b" }  'A'..'E';
+print "$sum $min $maxstr $concat $join\n";
