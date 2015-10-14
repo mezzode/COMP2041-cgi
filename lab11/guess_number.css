@@ -1,0 +1,22 @@
+.my-text {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: line-through;
+    font-family: "Wargames";
+	font-size: 100px;
+	color: lime;
+	background: black;
+}
+
+.my-form {
+    background-color: lime;
+    border: solid green;
+    border-radius: 100em;
+    color: #904142;
+	font-family: "Wargames";
+	font-size: 90px;
+	font-weight: bold;
+	text-align: center;
+}
