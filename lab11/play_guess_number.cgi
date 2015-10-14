@@ -3,13 +3,6 @@
 use CGI qw/:all/;
 use CGI::Carp qw(fatalsToBrowser warningsToBrowser);
 
-# Simple CGI script written by andrewt@cse.unsw.edu.au
-# Outputs a form which will rerun the script
-# An input field of type hidden is used to pass an integer
-# to successive invocations
-
-$max_number_to_guess = 99;
-
 print <<eof;
 Content-Type: text/html
 
@@ -24,7 +17,6 @@ eof
 
 warningsToBrowser(1);
 
-$number_to_guess = param('number_to_guess');
 $guess = param('guess');
 $max = param('max');
 $min = param('min');
@@ -38,13 +30,13 @@ if (not defined $max){
     $max = 100;
 }
 if (not defined $min){
-    $min = 0;
+    $min = 1;
 }
 
 if (defined $higher){
-    $min = $guess;
+    $min = $guess + 1;
 } elsif (defined $lower){
-    $max = $guess;
+    $max = $guess - 1;
 } elsif (defined $correct){
     $game_over = 1;
 }
