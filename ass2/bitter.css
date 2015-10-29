@@ -1,34 +1,45 @@
-/*
- * written by andrewt@cse.unsw.edu.au September 2015
- * as a starting point for COMP2041/9041 assignment 2
- * http://cgi.cse.unsw.edu.au/~cs2041/assignments/bitter/
- *
- * Change (or replace) the CSS below to create you own look-and-feel
- *
- * You will probably want to add  CSS to this file too
- */
-
-.bitter_heading {
-    padding-top: 1em;
-    padding-bottom: 1em;
-    text-align: center;
-    font-size: x-large;
-    font-weight: bold;
-    text-decoration: underline;
+.btn-link:active,
+.btn-link.active,
+.open > .dropdown-toggle.btn-link {
+  color: #444444;
+  background-color: #e6e6e6;
+  border-color: rgba(0, 0, 0, 0);
+}
+.btn-link:active:hover,
+.btn-link.active:hover,
+.open > .dropdown-toggle.btn-link:hover,
+.btn-link:active:focus,
+.btn-link.active:focus,
+.open > .dropdown-toggle.btn-link:focus,
+.btn-link:active.focus,
+.btn-link.active.focus,
+.open > .dropdown-toggle.btn-link.focus {
+  color: #444444;
+  background-color: #d4d4d4;
+  border-color: rgba(0, 0, 0, 0);
+}
+.btn-link:active,
+.btn-link.active,
+.open > .dropdown-toggle.btn-link {
+  background-image: none;
 }
 
-.bitter_user_details {
-    background-color: #ABCDEF;
-    color: #204142;
-    white-space: pre;
-    border:thin solid #204142;
-    border-radius: 1em;
-    padding-left: 0.42em;
+textarea {
+    resize: vertical;
 }
 
-.bitter_button {
-    background-color: #FEDBCA;
-    border:thin solid #904142;
-    border-radius: 0.42em;
-    color: #904142;
+.fab-fixed {
+    bottom: 24px;
+    right: 24px;
+    position: fixed;
+    z-index: 1000;
+}
+
+.toast {
+    width: 500px;
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    margin-left: -250px;
+    z-index: 1000;
 }
